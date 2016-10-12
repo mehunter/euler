@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
   
   while ( (nextFib = fib1 + fib2) < 4000000)
   {
+    /* Use bitwise AND instead of modular division to check for even Fibs */
     if ( !(nextFib & 1) ) total += nextFib;
     fib1 = fib2;
     fib2 = nextFib;
