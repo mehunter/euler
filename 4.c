@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 
 /* Function which returns 1 if argument is a Palindrome, else returns 0 */
 int isPalindrome (int x) {
-  if (reverse(x) - x == 0) {
+  if (reverse(x) == x) {
     return 1;
   }
 
