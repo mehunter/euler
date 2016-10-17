@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
       if (i % divisor != 0) {
 	i += LARGESTFACTOR;
 	eureka = 0;
+	break;
       }
     }
   }
