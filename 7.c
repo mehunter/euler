@@ -14,7 +14,15 @@ void nthPrime(int x);
 
 int main(int argc, char* argv[]) {
   printf("Euler Problem 7\n");
-  nthPrime(6);
+
+  if (argc == 2) {
+    nthPrime(atoi(argv[1]));
+  }
+
+  else {
+    nthPrime(6);
+  }
+  
   return 0;
 }
 
