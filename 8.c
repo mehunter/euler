@@ -31,12 +31,64 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 int main (int argc, char* argv[]) {
-  int numOfAdjDigits;
-  numOfAdjDigits = atoi(argv[1]);
+  int i, j, inputChar;
+  int numOfAdjDigits, numOfDigits;
+  int inputNum[1000];
+  float product, maxProduct;
+ 
   
+
+  /* Use command line argument for number of digits */
+  if (argc == 2) {
+      numOfAdjDigits = atoi(argv[1]);
+  } else {
+    numOfAdjDigits = 13;
+  }
+  
+  
+  /* Get digits into an array */
+  for (i = 0; i < 1000; ) {
+    inputChar = getchar();
+    if (inputChar >= '0' && inputChar <= '9') {
+      inputNum[i] = inputChar - '0';
+      i++;
+    }
+    
+    if (inputChar == EOF) {
+      break;
+    }
+  }
+  numOfDigits = i;
+
+
+  /* Multiply first set of digits */
+  for (i = 0; i < numOfDigits - numOfAdjDigits; i++) {
+    product = 1;
+    
+    for (j = 0; j < numOfAdjDigits; j++) {      
+      product *= inputNum[i + j];
+    }
+
+    if (product > maxProduct) {
+      maxProduct = product;
+    }
+  }
+  
+
+  /* Output the result */
   printf("The maximum product of %d adjacent digits is:\n", numOfAdjDigits);
+  printf("%.0f\n", maxProduct);
 
   return 0;
 }
+
+/*
+  mhunter:euler$ ./8 4 < 8input.txt 
+  The maximum product of 4 adjacent digits is:
+  5832
+
+  mhunter:euler$ ./8 < 8input.txt 
+  The maximum product of 13 adjacent digits is:
+  23514624000
+*/
