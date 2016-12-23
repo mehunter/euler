@@ -15,39 +15,42 @@
 #define TRUE 1
 #define FALSE 0
 
-void findTriple(int sum);
+void findTriplet(int perimeter);
 
 int main (int argc, char* argv[]) {
   if (argc == 2) {
-    findTriple( atoi(argv[1]) );
+    int perimeter;
+    perimeter = atoi(argv[1]);
+    findTriplet(perimeter);
   }
 
   else {
-    printf("This program requires a command line argument equal to the sum\n");
-    printf("of a + b + c, the terms of the pythagorean triple.\n");
+    printf("This program requires a command line argument for the perimeter\n");
+    printf("of the right triangle, a + b + c.\n");
   }
 
   return 0;
 }
 
-void findTriple(int sum) {
-  int a, b, c, tripleExists;
-  tripleExists = FALSE;
-  for (a = 1; a < sum / 3; a++) {
-    for (b = a + 1; b < sum / 2; b++) {
-      c = sum - a - b;
+void findTriplet(int perimeter) {
+  int a, b, c, tripletFound;
+  tripletFound = FALSE;
+  for (a = 1; a < perimeter / 3; a++) {
+    for (b = a + 1; b < perimeter / 2; b++) {
+      c = perimeter - a - b;
   
       if (a*a + b*b == c*c) {
-        tripleExists = TRUE;
-        printf("Pythagorean Triple: a = %d, b = %d, c = %d\n", a, b, c);
-	printf("Sum of Triple terms: a + b + c = %d\n", a + b + c);
-	printf("Product of Triple terms: a * b * c = %d\n\n", a * b * c);
+        tripletFound = TRUE;
+        printf("Pythagorean Triplet: a = %d, b = %d, c = %d ", a, b, c);
+	printf("with perimeter = a + b + c = %d\n", a + b + c);
+	printf("Product of Triplet terms: a * b * c = %d\n\n", a * b * c);
        }
     }
   }
 
-  if (tripleExists == FALSE) {
-    printf("There is no Pythagorean Triple that sums to %d.\n", sum );
+  if (tripletFound == FALSE) {
+    printf("There is no Pythagorean Triplet with perimeter of %d.\n",
+	   perimeter );
   }
   
 }
